@@ -1,15 +1,16 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestClass : MonoBehaviour
 {
     [SerializeField] private ZombieSpawner zombieSpawner;
+    [SerializeField] private Button spawnButton;
     public event Action OnZombieSpawned;
-   
-    private void Update()
+
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-            OnZombieSpawned?.Invoke();
-            
+        spawnButton.onClick.AddListener(() => OnZombieSpawned?.Invoke());
     }
+    
 }

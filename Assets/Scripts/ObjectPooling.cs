@@ -42,7 +42,8 @@ public class Pool<T> where T : Component
         obj.gameObject.SetActive(false); // ვთშავ ობჯექტს
         _objects.Enqueue(obj); // ვაბრუნებ საცავში
     }
-
+    
+    // ამის გადატანა შეიძლება სხვაგან, რომ ფულინგმა მხოლოდ თავის საქმე აკეთოს
     private void ResetObject(T obj)
     {
         obj.transform.SetParent(_parent); // ვაბრუნებ მშობელთან
