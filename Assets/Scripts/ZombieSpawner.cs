@@ -24,12 +24,8 @@ public class ZombieSpawner : MonoBehaviour
         _zombie.OnZombieDestroyed += ReturnZombie;
     }
     
-    private void ReturnZombie(Zombie zombie)
-    {
-        zombie.SpriteRenderer.color = Color.white;
-        zombie.IsMoving = true;
+    private void ReturnZombie(Zombie zombie) =>
         _zombiePool.ReturnToPool(zombie);
-    }
     
     private void OnDrawGizmos()
     {

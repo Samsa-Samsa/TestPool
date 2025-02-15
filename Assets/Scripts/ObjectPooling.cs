@@ -14,13 +14,9 @@ public class Pool<T> where T : Component
         _parent = parent;
 
         for (var i = 0; i < size; i++)
-        {
             AddObjectToPool();
-        }
     }
-
-   
-
+    
     //ვქმნი ობიექტს, ვთიშავ და ვამატებ საცავში.
     private void AddObjectToPool()
     {

@@ -12,13 +12,11 @@ public class Zombie : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float stoppingDistance;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    public event Action<Zombie> OnZombieDestroyed;
     [SerializeField] private bool isMoving = true;
     [SerializeField] private ZombieType zombieType;
-    public bool IsMoving { set => isMoving = value; }
-    
+    public event Action<Zombie> OnZombieDestroyed;
     public Transform Target { get; set; }
-    public SpriteRenderer SpriteRenderer => spriteRenderer;
+   
 
     private void OnEnable()
     {
