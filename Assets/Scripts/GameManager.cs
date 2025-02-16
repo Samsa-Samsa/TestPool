@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private TestClass testClass;
     [SerializeField] private ZombieSpawner zombieSpawner;
-    private void OnEnable()
+    private void OnEnable() 
     {
         testClass.OnZombieSpawned += zombieSpawner.SpawnZombie;
     }
@@ -13,4 +13,5 @@ public class GameManager : MonoBehaviour
     {
         testClass.OnZombieSpawned -= zombieSpawner.SpawnZombie;
     }
+    
 }

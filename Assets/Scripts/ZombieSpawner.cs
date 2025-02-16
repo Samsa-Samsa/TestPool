@@ -6,11 +6,12 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] private int amount = 10;
     [SerializeField] private Transform target;
     [SerializeField] private float spawnRadius = 5f;
+    [SerializeField] private Transform parent;
     private Pool<Zombie> _zombiePool;
 
     private void Awake()
     {
-        _zombiePool = new Pool<Zombie>(zombiePrefab, amount, transform);
+        _zombiePool = new Pool<Zombie>(zombiePrefab, amount, parent);
     }
 
     public void SpawnZombie()

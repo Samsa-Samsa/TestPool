@@ -12,7 +12,6 @@ public class Pool<T> where T : Component
         _objects = new Queue<T>(size);
         _prefab = prefab;
         _parent = parent;
-
         for (var i = 0; i < size; i++)
             AddObjectToPool();
     }
