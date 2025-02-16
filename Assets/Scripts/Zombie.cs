@@ -12,15 +12,14 @@ public class Zombie : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float stoppingDistance;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private bool isMoving = true;
     [SerializeField] private ZombieType zombieType;
+    [SerializeField] private LayerMask bulletLayer;
     public event Action<Zombie> OnZombieDestroyed;
     public Transform Target { get; set; }
    
 
     private void OnEnable()
     {
-        isMoving = true;
         zombieType = Random.value > 0.5f ? ZombieType.Slow : ZombieType.Fast;
         switch (zombieType)
         {
@@ -39,15 +38,15 @@ public class Zombie : MonoBehaviour
 
     private void Update()
     {
-        if (!isMoving) return; 
-        var distance = Vector3.Distance(transform.position, Target.position);
-        if (distance <= stoppingDistance)
-        {
-            OnZombieDestroyed?.Invoke(this); 
-            isMoving = false;
-            return;
-        }
         transform.position = Vector3.MoveTowards(transform.position, Target.position,
             speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (bulletLayer == (bulletLayer | (1 << other.gameObject.layer)))
+        {
+            OnZombieDestroyed?.Invoke(this); 
+        }
     }
 }
