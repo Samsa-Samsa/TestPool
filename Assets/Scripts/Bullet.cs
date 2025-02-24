@@ -6,7 +6,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private LayerMask bulletLayer;
     public event Action<Bullet> OnHit;
-    
+
+  
     public Transform Target { get => target; set => target = value; }
 
     private void Update()

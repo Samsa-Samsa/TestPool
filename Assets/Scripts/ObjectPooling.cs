@@ -19,7 +19,6 @@ public class Pool<T> where T : Component
     //ვქმნი ობიექტს, ვთიშავ და ვამატებ საცავში.
     private void AddObjectToPool()
     {
-        
         var obj = Object.Instantiate(_prefab, _parent);
         obj.gameObject.SetActive(false);
         _objects.Enqueue(obj);
@@ -30,7 +29,6 @@ public class Pool<T> where T : Component
     {
         var obj = _objects.Count > 0 ? _objects.Dequeue() : // ამომაქვს საცავიდან
             Object.Instantiate(_prefab, _parent); // თუ არ მაქვს საცავში ახალს ვქმნი
-
         ResetObject(obj); // ვაბრუნებ საწყის პოზიციაზე
         obj.gameObject.SetActive(true); // ვრთავ ობჯექტს
         return obj;

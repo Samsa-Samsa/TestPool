@@ -5,6 +5,8 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private int amount;
     private Pool<Bullet> _pool;
+    
+    
 
     private void Awake()
     {
@@ -14,6 +16,8 @@ public class BulletSpawner : MonoBehaviour
     public void SpawnBullet(Transform position)
     {
         var bullet = _pool.GetFromPool();
+        
+        
         bullet.Target = position;
         bullet.OnHit -= DeleteBullet;
         bullet.OnHit += DeleteBullet;
@@ -23,4 +27,5 @@ public class BulletSpawner : MonoBehaviour
     {
         _pool.ReturnToPool(bullet);
     }
+              
 }

@@ -23,6 +23,7 @@ public class ZombieSpawner : MonoBehaviour
         zombie.Target = target;
         zombie.OnZombieDestroyed -= ReturnZombie; 
         zombie.OnZombieDestroyed += ReturnZombie;
+      
     }
 
     private void ReturnZombie(Zombie zombie)
